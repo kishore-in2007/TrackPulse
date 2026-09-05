@@ -123,54 +123,54 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
       </div>
 
       {/* Main Container */}
-      <div className="p-5 sm:p-7 space-y-6 bg-white">
+      <div className="p-4 sm:p-7 space-y-5 sm:space-y-6 bg-white">
         {/* Tab Selection Bar */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-4">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 border-b border-slate-200 pb-3 sm:pb-4">
           <button
             onClick={() => setActiveTab('LIVE_ETA')}
-            className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all flex items-center space-x-1.5 sm:space-x-2 ${
               activeTab === 'LIVE_ETA'
                 ? 'bg-[#ea580c] text-white shadow-md border border-[#ea580c]'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
             }`}
           >
-            <Radio className="h-4 w-4" />
+            <Radio className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>{t.live_train_running_eta}</span>
           </button>
 
           <button
             onClick={() => setActiveTab('BETWEEN_STATIONS')}
-            className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all flex items-center space-x-1.5 sm:space-x-2 ${
               activeTab === 'BETWEEN_STATIONS'
                 ? 'bg-[#ea580c] text-white shadow-md border border-[#ea580c]'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
             }`}
           >
-            <Train className="h-4 w-4" />
+            <Train className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>{t.find_trains}</span>
           </button>
 
           <button
             onClick={() => setActiveTab('PNR_STATUS')}
-            className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all flex items-center space-x-1.5 sm:space-x-2 ${
               activeTab === 'PNR_STATUS'
                 ? 'bg-[#ea580c] text-white shadow-md border border-[#ea580c]'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
             }`}
           >
-            <MessageSquare className="h-4 w-4" />
+            <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>{t.pnr_status}</span>
           </button>
 
           <button
             onClick={() => setActiveTab('STATION_LIVE')}
-            className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all flex items-center space-x-1.5 sm:space-x-2 ${
               activeTab === 'STATION_LIVE'
                 ? 'bg-[#ea580c] text-white shadow-md border border-[#ea580c]'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
             }`}
           >
-            <Navigation className="h-4 w-4" />
+            <Navigation className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span>{t.live_station}</span>
           </button>
         </div>

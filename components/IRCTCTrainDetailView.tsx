@@ -145,7 +145,7 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
       </div>
 
       {/* Quick Service Highlights Bar */}
-      <div className="px-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+      <div className="px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs font-mono">
         <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center space-x-2.5 shadow-2xs">
           <Utensils className="h-5 w-5 text-[#ea580c] flex-shrink-0" />
           <div>
@@ -180,48 +180,48 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
       </div>
 
       {/* Details Navigation Tabs */}
-      <div className="px-6">
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3 text-xs font-bold font-mono">
+      <div className="px-4 sm:px-6">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 border-b border-slate-200 pb-3 text-xs font-bold font-mono">
           <button
             onClick={() => setActiveTab('HALTS')}
-            className={`px-3.5 py-2 rounded-lg transition-all ${
+            className={`px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg transition-all text-[11px] sm:text-xs ${
               activeTab === 'HALTS'
                 ? 'bg-[#ea580c] text-white shadow-sm'
                 : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
-            INTERMEDIATE HALTS TIMETABLE ({eta.section_timeline.length + 1} STATIONS)
+            HALTS TIMETABLE ({eta.section_timeline.length + 1})
           </button>
 
           <button
             onClick={() => setActiveTab('COACHES')}
-            className={`px-3.5 py-2 rounded-lg transition-all ${
+            className={`px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg transition-all text-[11px] sm:text-xs ${
               activeTab === 'COACHES'
                 ? 'bg-[#ea580c] text-white shadow-sm'
                 : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
-            COACH POSITION & RAKE COMPOSITION
+            COACH POSITION ({coachComposition.length})
           </button>
 
           <button
             onClick={() => setActiveTab('SPECS')}
-            className={`px-3.5 py-2 rounded-lg transition-all ${
+            className={`px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg transition-all text-[11px] sm:text-xs ${
               activeTab === 'SPECS'
                 ? 'bg-[#ea580c] text-white shadow-sm'
                 : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
-            LOCOMOTIVE & TRACK SPECS
+            LOCO & TRACK SPECS
           </button>
         </div>
       </div>
 
       {/* Tab 1: Comprehensive Intermediate Halts Table */}
       {activeTab === 'HALTS' && (
-        <div className="px-6 pb-6 space-y-3">
+        <div className="px-4 sm:px-6 pb-6 space-y-3">
           <div className="overflow-x-auto rounded-xl border border-slate-200">
-            <table className="w-full text-left text-xs font-mono">
+            <table className="w-full min-w-[680px] text-left text-xs font-mono">
               <thead className="bg-[#0b3b60] text-white uppercase text-[11px] border-b border-slate-200">
                 <tr>
                   <th className="py-3 px-3">#</th>
@@ -317,7 +317,7 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
 
       {/* Tab 2: Visual Coach Position & Composition */}
       {activeTab === 'COACHES' && (
-        <div className="px-6 pb-6 space-y-4">
+        <div className="px-4 sm:px-6 pb-6 space-y-4">
           <div className="flex items-center justify-between text-xs text-slate-600 font-mono font-bold">
             <span className="text-[#ea580c]">ENGINE DIRECTION ━━━━▶</span>
             <span className="text-slate-800">TOTAL RAKE: {coachComposition.length} COACHES</span>
@@ -350,7 +350,7 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
 
       {/* Tab 3: Locomotive & Technical Specs */}
       {activeTab === 'SPECS' && (
-        <div className="px-6 pb-6 space-y-4 font-mono text-xs">
+        <div className="px-4 sm:px-6 pb-6 space-y-4 font-mono text-xs">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-2xs space-y-1">
               <span className="text-slate-500 text-[10px] block font-bold">PRIMARY TRACTION</span>

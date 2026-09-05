@@ -130,7 +130,7 @@ export default function PNRPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs font-mono">
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 shadow-2xs">
               <span className="text-slate-500 block text-[10px] font-bold">ROUTE</span>
               <span className="text-sm font-black text-slate-800">{pnrResult.source} → {pnrResult.destination}</span>

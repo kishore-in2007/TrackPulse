@@ -60,7 +60,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 flex-shrink-0">
+            <nav className="hidden xl:flex items-center space-x-1 flex-shrink-0">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href.split('?')[0]));
@@ -68,7 +68,7 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`px-2 xl:px-2.5 py-1.5 rounded-md text-[11px] xl:text-xs font-semibold flex items-center space-x-1 transition-all ${
+                    className={`px-2 py-1.5 rounded-md text-[11px] 2xl:text-xs font-semibold flex items-center space-x-1 transition-all ${
                       isActive
                         ? 'bg-[#ea580c] text-white shadow-sm'
                         : 'text-slate-200 hover:text-white hover:bg-white/10'
@@ -133,7 +133,7 @@ export default function Navbar() {
               {/* Mobile Menu Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-1.5 rounded-lg bg-[#0b3b60] hover:bg-[#0f4b7a] text-white border border-white/20 lg:hidden transition-all"
+                className="p-1.5 rounded-lg bg-[#0b3b60] hover:bg-[#0f4b7a] text-white border border-white/20 xl:hidden transition-all"
                 aria-label="Toggle Navigation Menu"
               >
                 {mobileMenuOpen ? <X className="h-5 w-5 text-[#ff9933]" /> : <Menu className="h-5 w-5" />}
@@ -144,7 +144,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#082b4c] border-t border-white/10 px-4 py-3 space-y-3">
+          <div className="xl:hidden bg-[#082b4c] border-t border-white/10 px-4 py-3 space-y-3">
             {/* Mobile Train Search Form */}
             <form onSubmit={handleSearch} className="relative">
               <input
@@ -158,7 +158,7 @@ export default function Navbar() {
             </form>
 
             {/* Mobile Nav Links Grid */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href.split('?')[0]));

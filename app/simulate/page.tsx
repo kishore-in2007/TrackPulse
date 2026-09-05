@@ -235,14 +235,14 @@ export default function SimulatePage() {
               Primary Injected Disruption: {simulationResult.primary_diff.train_name} ({simulationResult.primary_diff.train_number})
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Baseline Box */}
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2 shadow-2xs">
                 <span className="text-xs font-black text-slate-600 uppercase tracking-wider font-mono">
                   BASELINE (ORIGINAL ESTIMATE)
                 </span>
-                <div className="flex items-baseline space-x-3">
-                  <span className="text-3xl font-black font-mono text-[#082b4c]">
+                <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+                  <span className="text-2xl sm:text-3xl font-black font-mono text-[#082b4c]">
                     {simulationResult.primary_diff.baseline_arrival}
                   </span>
                   <span className="text-xs font-mono font-bold text-slate-500">
@@ -259,8 +259,8 @@ export default function SimulatePage() {
                 <span className="text-xs font-black text-amber-900 uppercase tracking-wider font-mono">
                   SCENARIO (AFTER +{simulationResult.delay_injected_min}M DISRUPTION)
                 </span>
-                <div className="flex items-baseline space-x-3">
-                  <span className="text-3xl font-black font-mono text-amber-900">
+                <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+                  <span className="text-2xl sm:text-3xl font-black font-mono text-amber-900">
                     {simulationResult.primary_diff.scenario_arrival}
                   </span>
                   <span className="text-xs font-mono text-amber-800 font-black">

@@ -74,8 +74,8 @@ export default function PassengerPage() {
       </div>
 
       {/* Query Filter Card */}
-      <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="bg-white rounded-xl p-4 sm:p-6 border border-slate-200 shadow-xs space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Source */}
           <div className="space-y-1.5">
             <label className="text-xs font-black text-[#082b4c] font-mono">SOURCE STATION:</label>
@@ -216,10 +216,10 @@ export default function PassengerPage() {
           </div>
         )}
 
-        {/* Popular Quick Selects */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-200">
-          <div className="flex items-center space-x-2 text-xs">
-            <span className="text-slate-500 font-mono text-[11px] font-bold">Popular Corridors:</span>
+        {/* Popular Route Shortcuts & Action Button */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-200">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
+            <span className="text-slate-500 font-mono text-[11px] font-bold">Popular:</span>
             {popularRoutes.map((r, idx) => (
               <button
                 key={idx}
@@ -228,7 +228,7 @@ export default function PassengerPage() {
                   setDestination(r.dst);
                   fetchRecommendations();
                 }}
-                className="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50 text-slate-700 border border-slate-200 text-[11px] font-mono font-bold transition-all"
+                className="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50 text-slate-700 border border-slate-200 text-[10px] sm:text-[11px] font-mono font-bold transition-all"
               >
                 {r.label}
               </button>
@@ -238,7 +238,7 @@ export default function PassengerPage() {
           <button
             onClick={fetchRecommendations}
             disabled={loading}
-            className="px-5 py-2 rounded-lg bg-[#ff9933] hover:bg-[#e08522] text-[#082b4c] font-black text-xs font-mono flex items-center gap-1.5 transition-all shadow-xs"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#ff9933] hover:bg-[#e08522] text-[#082b4c] font-black text-xs font-mono flex items-center justify-center gap-1.5 transition-all shadow-xs"
           >
             <span>{loading ? 'Evaluating AI Models...' : 'Search & Rank Trains'}</span>
           </button>
@@ -256,9 +256,9 @@ export default function PassengerPage() {
 
           {/* Featured Recommended Train Card */}
           {results.recommended_train && (
-            <div className="bg-white rounded-2xl p-6 border-2 border-blue-600 relative overflow-hidden shadow-sm">
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
-                <div className="flex items-center space-x-2">
+            <div className="bg-white rounded-2xl p-4 sm:p-6 border-2 border-blue-600 relative overflow-hidden shadow-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-slate-200">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="px-3 py-1 rounded-md bg-[#ff9933] text-[#082b4c] font-black text-xs flex items-center gap-1 font-mono">
                     <Star className="h-3.5 w-3.5 fill-current" />
                     TOP RECOMMENDED CHOICE
@@ -272,7 +272,7 @@ export default function PassengerPage() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
                 <div>
                   <div className="text-2xl font-black font-mono text-[#082b4c]">
                     {results.recommended_train.train_number}

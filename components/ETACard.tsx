@@ -34,18 +34,18 @@ export default function ETACard({ eta }: ETACardProps) {
   };
 
   return (
-    <div className="glass-panel rounded-xl p-6 relative overflow-hidden border border-slate-200 shadow-sm bg-white">
+    <div className="glass-panel rounded-xl p-4 sm:p-6 relative overflow-hidden border border-slate-200 shadow-sm bg-white">
       {/* Header Info */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4 mb-4 sm:mb-6">
         <div>
-          <div className="flex items-center space-x-3">
-            <span className="text-2xl font-black tracking-wide text-[#082b4c] font-mono">{eta.train_number}</span>
-            <span className="text-xl font-bold text-slate-900">{eta.train_name}</span>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="text-xl sm:text-2xl font-black tracking-wide text-[#082b4c] font-mono">{eta.train_number}</span>
+            <span className="text-lg sm:text-xl font-bold text-slate-900">{eta.train_name}</span>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-300 text-slate-700 font-medium">
               {eta.train_type}
             </span>
           </div>
-          <div className="flex items-center space-x-2 text-sm text-slate-600 mt-1 font-medium">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600 mt-1 font-medium">
             <span>{eta.source_station_name} ({eta.source_station})</span>
             <span className="text-slate-400">→</span>
             <span className="text-slate-900 font-bold">{eta.destination_station_name} ({eta.destination_station})</span>
@@ -54,17 +54,17 @@ export default function ETACard({ eta }: ETACardProps) {
 
         {/* Badges */}
         <div className="flex items-center space-x-2">
-          <span className={`px-3 py-1 rounded-md text-xs font-bold border ${getRegimeColor(eta.regime)}`}>
+          <span className={`px-2.5 sm:px-3 py-1 rounded-md text-xs font-bold border ${getRegimeColor(eta.regime)}`}>
             {eta.regime} REGIME
           </span>
-          <span className="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 border border-slate-300 text-slate-700 font-mono">
+          <span className="px-2.5 sm:px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 border border-slate-300 text-slate-700 font-mono">
             {eta.data_mode} MODE
           </span>
         </div>
       </div>
 
       {/* Dynamic Forecast Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {/* Card 1: Current Delay */}
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
           <div className="flex items-center justify-between text-xs text-slate-600 font-semibold">
