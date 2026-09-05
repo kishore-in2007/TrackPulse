@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Train, Network, GitBranch, MessageSquare, Compass, Activity, Radio, Search, Eye, Globe } from 'lucide-react';
+import { Train, Network, GitBranch, MessageSquare, Compass, Activity, Radio, Search, Eye, Globe, Brain } from 'lucide-react';
 import AccessibilityModal from '@/components/AccessibilityModal';
 import { SupportedLanguage } from '@/lib/utils/translations';
 
@@ -31,6 +31,7 @@ export default function Navbar() {
     { name: 'What-If Simulation', href: '/simulate', icon: GitBranch },
     { name: 'Passenger Planner', href: '/passenger', icon: Compass },
     { name: 'PNR & SMS', href: '/pnr', icon: MessageSquare },
+    { name: 'AI Model', href: '/ml', icon: Brain },
   ];
 
   return (

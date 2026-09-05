@@ -35,11 +35,39 @@ export default function SimulatePage() {
     runSimulation('12675', 30);
   }, []);
 
+  const [customTrainInput, setCustomTrainInput] = useState('');
+  const [disruptionCause, setDisruptionCause] = useState('Signal Interlocking Failure at Intermediate Section');
+
   const sampleTrains = [
     { id: '12675', name: '12675 Kovai Express (MAS Arrival)', route: 'CBE → MAS' },
     { id: '12622', name: '12622 Tamil Nadu Express (Superfast Trunk)', route: 'NDLS → MAS' },
     { id: '12007', name: '12007 Mysore Shatabdi (Intercity Link)', route: 'MAS → MYS' },
+    { id: '12842', name: '12842 Coromandel Express (Eastern Coast)', route: 'HWH → MAS' },
+    { id: '22626', name: '22626 Bangalore Double Decker', route: 'SBC → MAS' },
+    { id: '12951', name: '12951 Mumbai Rajdhani Express', route: 'MMCT → NDLS' },
+    { id: '12301', name: '12301 Howrah Rajdhani Express', route: 'HWH → NDLS' },
+    { id: '22436', name: '22436 Vande Bharat Express', route: 'NDLS → BSB' }
   ];
+
+  const disruptionCauses = [
+    'Signal Interlocking Failure at Intermediate Block',
+    'Active Monsoon Caution Order & Waterlogging',
+    'Inbound Feeder Rake Turnaround Shortfall',
+    'Loco Traction Motor Thermal Overheat',
+    'Emergency Track Maintenance / Block Working',
+    'Dense Winter Fog Speed Restriction (< 60 km/h)'
+  ];
+
+  const delayPresets = [15, 30, 45, 60, 90, 120];
+
+  const handleApplyCustomTrain = (e: React.FormEvent) => {
+    e.preventDefault();
+    const clean = customTrainInput.trim().replace(/\D/g, '');
+    if (clean) {
+      setSelectedTrain(clean);
+      runSimulation(clean, injectedDelay);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -57,25 +85,26 @@ export default function SimulatePage() {
           What-If Network Delay Simulation & Propagation Engine
         </h1>
         <p className="text-xs text-slate-600 font-medium mt-1">
-          Inject hypothetical operational disruptions to evaluate real-time multi-train cascading delays and passenger connection risk escalations.
+          Inject hypothetical operational disruptions on ANY train across the 2,810 Indian Railways network to evaluate real-time multi-train cascading delays and passenger connection risk escalations.
         </p>
       </div>
 
       {/* Simulation Control Card */}
-      <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          {/* Train Selector */}
-          <div className="md:col-span-5 space-y-2">
+      <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+          {/* Train Selector & Custom Search */}
+          <div className="md:col-span-6 space-y-2">
             <label className="text-xs font-black text-[#082b4c] uppercase tracking-wider block font-mono">
-              Select Disrupted Train:
+              Select or Enter Any Train Number:
             </label>
             <select
               value={selectedTrain}
               onChange={(e) => {
                 setSelectedTrain(e.target.value);
+                setCustomTrainInput('');
                 runSimulation(e.target.value, injectedDelay);
               }}
-              className="w-full bg-slate-50 text-slate-900 rounded-lg px-3 py-2.5 border border-slate-300 focus:outline-none focus:border-blue-600 text-xs font-mono font-bold"
+              className="w-full bg-slate-50 text-slate-900 rounded-lg px-3 py-2 border border-slate-300 focus:outline-none focus:border-blue-600 text-xs font-mono font-bold"
             >
               {sampleTrains.map((t) => (
                 <option key={t.id} value={t.id}>
@@ -83,43 +112,90 @@ export default function SimulatePage() {
                 </option>
               ))}
             </select>
+
+            {/* Custom Any Train Input */}
+            <form onSubmit={handleApplyCustomTrain} className="flex gap-2 pt-1">
+              <input
+                type="text"
+                value={customTrainInput}
+                onChange={(e) => setCustomTrainInput(e.target.value)}
+                placeholder="Or enter any 4/5-digit Train (e.g. 12952)..."
+                className="flex-1 bg-slate-50 text-slate-900 placeholder:text-slate-400 text-xs px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-blue-600 font-mono font-bold"
+              />
+              <button
+                type="submit"
+                className="px-3 py-2 bg-[#082b4c] hover:bg-[#0b3b60] text-white text-xs font-bold font-mono rounded-lg transition-all shadow-2xs"
+              >
+                Simulate
+              </button>
+            </form>
           </div>
 
-          {/* Delay Injection Slider */}
-          <div className="md:col-span-5 space-y-2">
-            <div className="flex items-center justify-between text-xs font-mono">
-              <label className="font-black text-[#082b4c] uppercase tracking-wider">
-                Injected Delay:
-              </label>
-              <span className="text-xs font-black text-amber-800 font-mono bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                +{injectedDelay} minutes
-              </span>
-            </div>
-            <input
-              type="range"
-              min="5"
-              max="90"
-              step="5"
-              value={injectedDelay}
-              onChange={(e) => {
-                const val = parseInt(e.target.value, 10);
-                setInjectedDelay(val);
-              }}
-              className="w-full accent-amber-600"
-            />
-          </div>
-
-          {/* Run Button */}
-          <div className="md:col-span-2 flex items-end">
-            <button
-              onClick={() => runSimulation(selectedTrain, injectedDelay)}
-              disabled={loading}
-              className="w-full py-2.5 px-4 bg-[#082b4c] hover:bg-[#0b3b60] disabled:opacity-50 text-white font-bold rounded-lg text-xs flex items-center justify-center space-x-1.5 transition-all shadow-xs font-mono"
+          {/* Disruption Cause Selector */}
+          <div className="md:col-span-6 space-y-2">
+            <label className="text-xs font-black text-[#082b4c] uppercase tracking-wider block font-mono">
+              Hypothetical Operational Cause:
+            </label>
+            <select
+              value={disruptionCause}
+              onChange={(e) => setDisruptionCause(e.target.value)}
+              className="w-full bg-slate-50 text-slate-900 rounded-lg px-3 py-2.5 border border-slate-300 focus:outline-none focus:border-blue-600 text-xs font-bold"
             >
-              <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
-              <span>{loading ? 'Simulating...' : 'Recalculate'}</span>
-            </button>
+              {disruptionCauses.map((c, idx) => (
+                <option key={idx} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+
+            {/* Delay Presets */}
+            <div className="flex items-center gap-1.5 pt-1">
+              <span className="text-[11px] font-mono text-slate-500 font-bold">Quick Delays:</span>
+              <div className="flex flex-wrap gap-1">
+                {delayPresets.map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => {
+                      setInjectedDelay(d);
+                      runSimulation(selectedTrain, d);
+                    }}
+                    className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold border transition-all ${
+                      injectedDelay === d
+                        ? 'bg-amber-600 text-white border-amber-600 shadow-2xs'
+                        : 'bg-slate-100 hover:bg-amber-50 text-slate-700 border-slate-300'
+                    }`}
+                  >
+                    +{d}m
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Delay Slider Row */}
+        <div className="pt-2 border-t border-slate-200">
+          <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+            <span className="font-black text-[#082b4c] uppercase tracking-wider">
+              Fine-Grained Delay Adjustment Slider:
+            </span>
+            <span className="text-xs font-black text-amber-800 font-mono bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+              +{injectedDelay} minutes
+            </span>
+          </div>
+          <input
+            type="range"
+            min="5"
+            max="180"
+            step="5"
+            value={injectedDelay}
+            onChange={(e) => {
+              const val = parseInt(e.target.value, 10);
+              setInjectedDelay(val);
+            }}
+            className="w-full accent-amber-600"
+          />
         </div>
       </div>
 

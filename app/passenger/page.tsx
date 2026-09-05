@@ -10,6 +10,13 @@ export default function PassengerPage() {
   const [destination, setDestination] = useState('CBE');
   const [date, setDate] = useState('2026-09-10');
   const [preference, setPreference] = useState<'balanced' | 'fastest' | 'most_reliable' | 'lowest_delay_risk'>('balanced');
+  const [useCustomWeights, setUseCustomWeights] = useState(false);
+  const [customWeights, setCustomWeights] = useState({
+    arrival_quality: 0.35,
+    reliability: 0.25,
+    punctuality: 0.25,
+    connection_safety: 0.15
+  });
   const [results, setResults] = useState<RecommendationResponse | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -23,7 +30,8 @@ export default function PassengerPage() {
           source,
           destination,
           date,
-          preference
+          preference,
+          weights: useCustomWeights ? customWeights : undefined
         })
       });
       const data: RecommendationResponse = await res.json();
@@ -105,11 +113,21 @@ export default function PassengerPage() {
 
           {/* Preference Selector */}
           <div className="space-y-1.5">
-            <label className="text-xs font-black text-[#082b4c] font-mono">PASSENGER PRIORITY:</label>
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-black text-[#082b4c] font-mono">PRIORITY PROFILE:</label>
+              <button
+                type="button"
+                onClick={() => setUseCustomWeights(!useCustomWeights)}
+                className="text-[10px] text-blue-700 hover:underline font-mono font-bold"
+              >
+                {useCustomWeights ? 'Use Standard' : 'Custom Sliders'}
+              </button>
+            </div>
             <select
               value={preference}
               onChange={(e: any) => setPreference(e.target.value)}
-              className="w-full bg-slate-50 text-slate-900 rounded-lg px-3 py-2 border border-slate-300 focus:outline-none focus:border-blue-600 focus:bg-white text-xs font-mono font-bold"
+              disabled={useCustomWeights}
+              className="w-full bg-slate-50 text-slate-900 disabled:opacity-50 rounded-lg px-3 py-2 border border-slate-300 focus:outline-none focus:border-blue-600 focus:bg-white text-xs font-mono font-bold"
             >
               <option value="balanced">Balanced Utility (Standard)</option>
               <option value="fastest">Fastest Travel Time</option>
@@ -118,6 +136,85 @@ export default function PassengerPage() {
             </select>
           </div>
         </div>
+
+        {/* Custom Multi-Criteria Optimization Weight Sliders */}
+        {useCustomWeights && (
+          <div className="p-4 bg-slate-50 rounded-xl border border-blue-200 space-y-3">
+            <div className="flex items-center justify-between text-xs font-mono font-bold text-[#082b4c]">
+              <span className="flex items-center gap-1.5">
+                <Filter className="h-3.5 w-3.5 text-blue-600" />
+                Fine-Grained Multi-Criteria Optimization Weights
+              </span>
+              <span className="text-[10px] text-slate-500 font-normal">Adjust relative importance of each metric</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+              <div className="space-y-1">
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-600 font-bold">Arrival Quality:</span>
+                  <span className="text-[#082b4c] font-black">{Math.round(customWeights.arrival_quality * 100)}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0.05"
+                  max="0.80"
+                  step="0.05"
+                  value={customWeights.arrival_quality}
+                  onChange={(e) => setCustomWeights(prev => ({ ...prev, arrival_quality: parseFloat(e.target.value) }))}
+                  className="w-full accent-blue-600"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-600 font-bold">AI Reliability:</span>
+                  <span className="text-emerald-700 font-black">{Math.round(customWeights.reliability * 100)}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0.05"
+                  max="0.80"
+                  step="0.05"
+                  value={customWeights.reliability}
+                  onChange={(e) => setCustomWeights(prev => ({ ...prev, reliability: parseFloat(e.target.value) }))}
+                  className="w-full accent-emerald-600"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-600 font-bold">Historical Punctuality:</span>
+                  <span className="text-amber-800 font-black">{Math.round(customWeights.punctuality * 100)}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0.05"
+                  max="0.80"
+                  step="0.05"
+                  value={customWeights.punctuality}
+                  onChange={(e) => setCustomWeights(prev => ({ ...prev, punctuality: parseFloat(e.target.value) }))}
+                  className="w-full accent-amber-600"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-[11px]">
+                  <span className="text-slate-600 font-bold">Connection Safety:</span>
+                  <span className="text-purple-800 font-black">{Math.round(customWeights.connection_safety * 100)}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0.05"
+                  max="0.80"
+                  step="0.05"
+                  value={customWeights.connection_safety}
+                  onChange={(e) => setCustomWeights(prev => ({ ...prev, connection_safety: parseFloat(e.target.value) }))}
+                  className="w-full accent-purple-600"
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Popular Quick Selects */}
         <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-200">

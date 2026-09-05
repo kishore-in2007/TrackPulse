@@ -63,14 +63,18 @@ export default function ControlRoomKPIs({
       </div>
 
       {/* KPI 5: ML Delay Risk ROC-AUC */}
-      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
-        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
+      <a
+        href="/ml"
+        className="bg-white rounded-xl p-3.5 border border-slate-200 hover:border-blue-500 shadow-sm transition-all group block cursor-pointer"
+        title="View ML Model Explainability & Feature Weights"
+      >
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold group-hover:text-blue-700">
           <span>ML ROC-AUC</span>
-          <ShieldCheck className="h-3.5 w-3.5 text-[#0b3b60]" />
+          <ShieldCheck className="h-3.5 w-3.5 text-[#0b3b60] group-hover:text-blue-600" />
         </div>
-        <div className="mt-1.5 text-xl font-black font-mono text-[#0b3b60]">{rocAucScore.toFixed(4)}</div>
-        <div className="text-[10px] text-slate-500 font-mono mt-0.5">Zero-Leakage GBDT</div>
-      </div>
+        <div className="mt-1.5 text-xl font-black font-mono text-[#0b3b60] group-hover:text-blue-700">{rocAucScore.toFixed(4)}</div>
+        <div className="text-[10px] text-blue-600 font-mono font-bold mt-0.5 group-hover:underline">View AI Weights &rarr;</div>
+      </a>
 
       {/* KPI 6: Active Corridor */}
       <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">

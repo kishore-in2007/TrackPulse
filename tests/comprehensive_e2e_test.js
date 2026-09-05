@@ -292,7 +292,8 @@ async function runAnalysis() {
     { path: '/passenger', label: 'Passenger Smart Trip Recommendation Hub' },
     { path: '/simulate', label: 'Dispatcher What-If Scenario Sandbox' },
     { path: '/network', label: 'Corridor Congestion & Platform Occupancy Map' },
-    { path: '/station/MAS', label: 'Station Operational Terminal (MAS)' }
+    { path: '/station/MAS', label: 'Station Operational Terminal (MAS)' },
+    { path: '/ml', label: 'Machine Learning Intelligence & Feature Explainability' }
   ];
 
   for (const page of pages) {
