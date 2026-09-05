@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import GlobalStatusBar from '@/components/GlobalStatusBar';
+import Providers from '@/components/Providers';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -16,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-slate-100 text-slate-800 flex flex-col antialiased selection:bg-blue-600 selection:text-white">
-        <GlobalStatusBar />
-        <Navbar />
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {children}
-        </main>
+        <Providers>
+          <GlobalStatusBar />
+          <Navbar />
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            {children}
+          </main>
+        </Providers>
         <footer className="bg-white border-t border-slate-200 py-6 mt-auto text-slate-600">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
             <div className="flex flex-col sm:flex-row items-center justify-between text-xs gap-3">

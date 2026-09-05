@@ -3,12 +3,14 @@
 import React from 'react';
 import { DynamicETAResponse } from '@/lib/types/eta';
 import { Clock, ShieldCheck, AlertTriangle, AlertOctagon, TrendingUp, Navigation } from 'lucide-react';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 interface ETACardProps {
   eta: DynamicETAResponse;
 }
 
 export default function ETACard({ eta }: ETACardProps) {
+  const { t } = useLanguage();
   const getRegimeColor = (regime: string) => {
     switch (regime) {
       case 'DISRUPTED':
@@ -66,7 +68,7 @@ export default function ETACard({ eta }: ETACardProps) {
         {/* Card 1: Current Delay */}
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
           <div className="flex items-center justify-between text-xs text-slate-600 font-semibold">
-            <span>ACTIVE DELAY</span>
+            <span>{t.active_delay}</span>
             <AlertTriangle className={`h-4 w-4 ${eta.current_delay_minutes > 15 ? 'text-red-600' : (eta.current_delay_minutes > 5 ? 'text-amber-600' : 'text-emerald-600')}`} />
           </div>
           <div className="mt-2 flex items-baseline space-x-2">
@@ -84,7 +86,7 @@ export default function ETACard({ eta }: ETACardProps) {
         {/* Card 2: Dynamic Predicted ETA */}
         <div className="bg-blue-50/70 rounded-lg p-4 border border-blue-200 glow-accent">
           <div className="flex items-center justify-between text-xs text-[#082b4c] font-bold">
-            <span>DYNAMIC FORECAST (P50)</span>
+            <span>{t.predicted_eta}</span>
             <Clock className="h-4 w-4 text-[#0b3b60]" />
           </div>
           <div className="mt-2 flex items-baseline space-x-2">
@@ -99,7 +101,7 @@ export default function ETACard({ eta }: ETACardProps) {
         {/* Card 3: Uncertainty Bounds (P10 - P90) */}
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
           <div className="flex items-center justify-between text-xs text-slate-600 font-semibold">
-            <span>CALIBRATED RANGE</span>
+            <span>{t.uncertainty_range}</span>
             <TrendingUp className="h-4 w-4 text-slate-500" />
           </div>
           <div className="mt-2 flex items-baseline space-x-2">
@@ -117,7 +119,7 @@ export default function ETACard({ eta }: ETACardProps) {
         {/* Card 4: Calibrated Reliability */}
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
           <div className="flex items-center justify-between text-xs text-slate-600 font-semibold">
-            <span>PREDICTION RELIABILITY</span>
+            <span>{t.reliability}</span>
             <ShieldCheck className="h-4 w-4 text-emerald-600" />
           </div>
           <div className="mt-2 flex items-baseline space-x-2">
@@ -127,7 +129,7 @@ export default function ETACard({ eta }: ETACardProps) {
             <span className="text-xs text-slate-500 font-medium">calibrated</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-600 font-medium">
-            Delay Risk: <span className={getRiskColor(eta.risk)}>{eta.risk} ({Math.round(eta.delay_probability * 100)}% prob)</span>
+            {t.delay_risk}: <span className={getRiskColor(eta.risk)}>{eta.risk} ({Math.round(eta.delay_probability * 100)}% prob)</span>
           </div>
         </div>
       </div>

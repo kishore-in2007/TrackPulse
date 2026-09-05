@@ -22,6 +22,8 @@ import {
   Tag
 } from 'lucide-react';
 
+import { useLanguage } from '@/lib/context/LanguageContext';
+
 interface IRCTCBookingSearchHeroProps {
   onSelectTrain?: (trainId: string) => void;
   selectedTrainId?: string;
@@ -29,6 +31,7 @@ interface IRCTCBookingSearchHeroProps {
 
 export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId = '12675' }: IRCTCBookingSearchHeroProps) {
   const router = useRouter();
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'LIVE_ETA' | 'BETWEEN_STATIONS' | 'PNR_STATUS' | 'STATION_LIVE'>('LIVE_ETA');
 
   // Tab 1: Live Train ETA State
@@ -132,7 +135,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
             }`}
           >
             <Radio className="h-4 w-4" />
-            <span>LIVE TRAIN RUNNING ETA</span>
+            <span>{t.live_train_running_eta}</span>
           </button>
 
           <button
@@ -144,7 +147,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
             }`}
           >
             <Train className="h-4 w-4" />
-            <span>FIND TRAINS BETWEEN STATIONS</span>
+            <span>{t.find_trains}</span>
           </button>
 
           <button
@@ -156,7 +159,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
             }`}
           >
             <MessageSquare className="h-4 w-4" />
-            <span>PNR JOURNEY FORECAST</span>
+            <span>{t.pnr_status}</span>
           </button>
 
           <button
@@ -168,7 +171,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
             }`}
           >
             <Navigation className="h-4 w-4" />
-            <span>LIVE STATION BOARD</span>
+            <span>{t.live_station}</span>
           </button>
         </div>
 
@@ -199,7 +202,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
                   className="w-full py-3.5 px-6 bg-[#ea580c] hover:bg-[#c2410c] text-white font-black text-sm rounded-xl transition-all shadow-md flex items-center justify-center space-x-2 tracking-wide font-mono"
                 >
                   <Search className="h-4 w-4" />
-                  <span>GET DYNAMIC ETA</span>
+                  <span>{t.get_dynamic_eta}</span>
                 </button>
               </div>
             </div>
@@ -213,7 +216,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
               {/* Origin Station */}
               <div className="sm:col-span-1 md:col-span-3 space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block font-mono">
-                  From Station:
+                  {t.from_station}:
                 </label>
                 <div className="relative">
                   <input
@@ -242,7 +245,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
               {/* Destination Station */}
               <div className="sm:col-span-1 md:col-span-3 space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block font-mono">
-                  To Station:
+                  {t.to_station}:
                 </label>
                 <div className="relative">
                   <input
@@ -259,7 +262,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
               {/* Date */}
               <div className="sm:col-span-1 md:col-span-3 space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block font-mono">
-                  Date of Journey:
+                  {t.journey_date}:
                 </label>
                 <div className="relative">
                   <input
@@ -279,7 +282,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
                   className="w-full py-3 px-4 bg-[#ea580c] hover:bg-[#c2410c] text-white font-black text-xs rounded-xl transition-all shadow-md flex items-center justify-center space-x-1.5 tracking-wide font-mono"
                 >
                   <Search className="h-4 w-4" />
-                  <span>SEARCH TRAINS</span>
+                  <span>{t.search_trains_btn}</span>
                 </button>
               </div>
             </div>
@@ -314,7 +317,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
                   className="w-full py-3.5 px-6 bg-emerald-700 hover:bg-emerald-600 text-white font-black text-sm rounded-xl transition-all shadow-md flex items-center justify-center space-x-2 tracking-wide font-mono"
                 >
                   <ShieldCheck className="h-4 w-4" />
-                  <span>GET PNR STATUS</span>
+                  <span>{t.get_pnr_status}</span>
                 </button>
               </div>
             </div>
@@ -348,7 +351,7 @@ export default function IRCTCBookingSearchHero({ onSelectTrain, selectedTrainId 
                   className="w-full py-3.5 px-6 bg-[#0b3b60] hover:bg-[#082b4c] text-white font-black text-sm rounded-xl transition-all shadow-md flex items-center justify-center space-x-2 tracking-wide font-mono"
                 >
                   <Navigation className="h-4 w-4" />
-                  <span>OPEN STATION BOARD</span>
+                  <span>{t.open_station_board}</span>
                 </button>
               </div>
             </div>

@@ -1,18 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Train, Network, GitBranch, MessageSquare, Compass, Activity, Radio, Search, Eye, Globe, Brain, Menu, X } from 'lucide-react';
 import AccessibilityModal from '@/components/AccessibilityModal';
 import { SupportedLanguage } from '@/lib/utils/translations';
+import { useLanguage } from '@/lib/context/LanguageContext';
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { language, setLanguage, t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [showAccessibility, setShowAccessibility] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<SupportedLanguage>('en');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -26,14 +27,14 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { name: 'Dashboard', href: '/', icon: Activity },
-    { name: 'Train ETA', href: '/train/12675', icon: Train },
-    { name: 'Station Board', href: '/station/MAS', icon: Compass },
-    { name: 'Network Map', href: '/network', icon: Network },
-    { name: 'What-If Simulation', href: '/simulate', icon: GitBranch },
-    { name: 'Passenger Planner', href: '/passenger', icon: Compass },
-    { name: 'PNR & SMS', href: '/pnr', icon: MessageSquare },
-    { name: 'AI Model', href: '/ml', icon: Brain },
+    { name: t.operations_hub, href: '/', icon: Activity },
+    { name: t.train_detail, href: '/train/12675', icon: Train },
+    { name: t.station_master, href: '/station/MAS', icon: Compass },
+    { name: t.network_propagation, href: '/network', icon: Network },
+    { name: t.what_if_simulator, href: '/simulate', icon: GitBranch },
+    { name: t.passenger_planner, href: '/passenger', icon: Compass },
+    { name: t.pnr_sms, href: '/pnr', icon: MessageSquare },
+    { name: t.ai_model, href: '/ml', icon: Brain },
   ];
 
   return (
@@ -98,8 +99,8 @@ export default function Navbar() {
               <div className="relative hidden sm:flex items-center bg-[#0b3b60] rounded-lg border border-white/20 px-2 py-1 text-xs">
                 <Globe className="h-3.5 w-3.5 text-[#ff9933] mr-1.5" />
                 <select
-                  value={selectedLang}
-                  onChange={(e) => setSelectedLang(e.target.value as SupportedLanguage)}
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
                   className="bg-transparent text-white font-mono text-[11px] focus:outline-none cursor-pointer"
                 >
                   <option value="en" className="bg-[#082b4c] text-white">EN (English)</option>
@@ -183,8 +184,8 @@ export default function Navbar() {
             <div className="sm:hidden pt-2 border-t border-white/10 flex items-center justify-between text-xs">
               <span className="text-slate-300 text-xs font-mono">Language:</span>
               <select
-                value={selectedLang}
-                onChange={(e) => setSelectedLang(e.target.value as SupportedLanguage)}
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
                 className="bg-[#0b3b60] text-white font-mono text-xs px-2 py-1 rounded border border-white/20"
               >
                 <option value="en">English (EN)</option>
