@@ -9,6 +9,7 @@ import NetworkMap from '@/components/NetworkMap';
 import UniversalTrainPicker from '@/components/UniversalTrainPicker';
 import ControlRoomKPIs from '@/components/ControlRoomKPIs';
 import OperationalAlertsPanel from '@/components/OperationalAlertsPanel';
+import IRCTCBookingSearchHero from '@/components/IRCTCBookingSearchHero';
 import { DynamicETAResponse } from '@/lib/types/eta';
 import { NetworkAnalysisResponse } from '@/lib/types/network';
 
@@ -94,6 +95,12 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* IRCTC Flagship Booking, PNR & Dynamic Live Status Search Hero */}
+      <IRCTCBookingSearchHero
+        onSelectTrain={handleSelectTrain}
+        selectedTrainId={featuredEta?.train_number}
+      />
 
       {/* Real-time Replay Controller Bar */}
       <ReplayController

@@ -9,6 +9,7 @@ import ReasoningPanel from '@/components/ReasoningPanel';
 import TrainTimeline from '@/components/TrainTimeline';
 import TechnicalDimensionsCard from '@/components/TechnicalDimensionsCard';
 import DelayTrajectoryChart from '@/components/DelayTrajectoryChart';
+import IRCTCTrainDetailView from '@/components/IRCTCTrainDetailView';
 import { DynamicETAResponse } from '@/lib/types/eta';
 
 export default function TrainDetailPage() {
@@ -105,6 +106,9 @@ export default function TrainDetailPage() {
               </span>
             </div>
           </div>
+
+          {/* IRCTC Rich Train Details (Coach Layout, Intermediate Halts, Catering, Ratings) */}
+          <IRCTCTrainDetailView eta={etaData} />
 
           {/* Train Dimensions, Live Weather & Corridor Stats */}
           {etaData.technical_dimensions && (
