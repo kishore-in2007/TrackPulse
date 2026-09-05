@@ -70,9 +70,11 @@ export default function TrainTimeline({ timeline, currentStationCode }: TrainTim
                   <td className="py-3 px-3 text-slate-500">{sec.nominal_runtime_min}m</td>
                   <td className="py-3 px-3 text-[#082b4c] font-black">{sec.predicted_runtime_min}m</td>
                   <td className="py-3 px-3 text-slate-600">{sec.p10_runtime_min}m – {sec.p90_runtime_min}m</td>
-                  <td className="py-3 px-3 text-slate-900 font-bold flex items-center gap-1">
-                    <Clock className="h-3 w-3 text-[#0b3b60] inline" />
-                    {sec.expected_arrival}
+                  <td className="py-3 px-3 text-slate-900 font-bold">
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3 text-[#0b3b60] inline" />
+                      <span>{sec.expected_arrival}</span>
+                    </div>
                   </td>
                   <td className="py-3 px-3">
                     <span

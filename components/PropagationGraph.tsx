@@ -71,7 +71,7 @@ export default function PropagationGraph({ incoming, outgoing, conflicts, statio
                   </div>
                   <div className="flex items-center w-full my-1 text-slate-400">
                     <div className="flex-1 h-[1px] bg-slate-300" />
-                    <ArrowRight className={`h-4 w-4 mx-2 ${hasShortfall ? 'text-red-600 animate-pulse' : 'text-slate-400'}`} />
+                    <ArrowRight className={`h-4 w-4 mx-2 rotate-90 lg:rotate-0 transition-transform ${hasShortfall ? 'text-red-600 animate-pulse' : 'text-slate-400'}`} />
                     <div className="flex-1 h-[1px] bg-slate-300" />
                   </div>
                   <div className="text-[11px]">

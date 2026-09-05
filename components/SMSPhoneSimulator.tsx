@@ -245,7 +245,7 @@ export default function SMSPhoneSimulator() {
                 key={k.num}
                 onClick={() => {
                   if (k.num === '*') handleKeypadPress('PNR ');
-                  else if (k.num === '#') handleKeypadPress('');
+                  else if (k.num === '#') handleKeypadPress('TRAIN ');
                   else if (k.num === '0') handleKeypadPress('0');
                   else handleKeypadPress(k.num);
                 }}

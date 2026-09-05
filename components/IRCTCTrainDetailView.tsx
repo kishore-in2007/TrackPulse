@@ -269,18 +269,20 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
                       } hover:bg-sky-50/50`}
                     >
                       <td className="py-2.5 px-3 font-bold text-slate-500">{idx + 2}</td>
-                      <td className="py-2.5 px-3 font-bold text-slate-900 flex items-center space-x-1.5">
-                        <span>{sec.to_station_name} ({sec.to_station})</span>
-                        {isCurrent && (
-                          <span className="px-1.5 py-0.5 rounded bg-[#0b3b60] text-white text-[9px] font-bold">
-                            CURRENT
-                          </span>
-                        )}
-                        {isNext && (
-                          <span className="px-1.5 py-0.5 rounded bg-[#ea580c] text-white text-[9px] font-bold">
-                            NEXT
-                          </span>
-                        )}
+                      <td className="py-2.5 px-3 font-bold text-slate-900">
+                        <div className="flex items-center space-x-1.5">
+                          <span>{sec.to_station_name} ({sec.to_station})</span>
+                          {isCurrent && (
+                            <span className="px-1.5 py-0.5 rounded bg-[#0b3b60] text-white text-[9px] font-bold">
+                              CURRENT
+                            </span>
+                          )}
+                          {isNext && (
+                            <span className="px-1.5 py-0.5 rounded bg-[#ea580c] text-white text-[9px] font-bold">
+                              NEXT
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="py-2.5 px-3 text-slate-600">PF {(idx % 4) + 1}</td>
                       <td className="py-2.5 px-3 text-slate-500">+{sec.distance_km} km</td>
