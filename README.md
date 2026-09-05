@@ -2,9 +2,10 @@
 
 > **Smart India Hackathon (SIH) Problem Statement:** SIH26028  
 > **Organization:** Ministry of Railways, Government of India  
-> **Repository:** [https://github.com/Vasanth-repos/track_pulse.git](https://github.com/Vasanth-repos/track_pulse.git)  
+> **Repository:** [https://github.com/kishore-in2007/TrackPulse](https://github.com/kishore-in2007/TrackPulse)  
 > **Theme:** Official Government of India / IRCTC Light Accessible Portal Theme  
-> **Version:** 1.0.0 (Production-Ready Prototype)
+> **Version:** 1.0.0 (Vercel Production-Ready Release)
+
 
 ---
 

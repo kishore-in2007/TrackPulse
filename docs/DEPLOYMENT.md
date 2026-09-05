@@ -1,38 +1,51 @@
 # Vercel Deployment & Production Guide
 
 ## Architecture on Vercel
-TrackPulse is engineered for serverless deployment on Vercel:
-1. **Lightweight Artifacts**: Heavy ML training happens offline / on Kaggle. The production Next.js runtime only bundles compact precomputed JSON/Parquet models and statistics (`< 15MB`).
-2. **Serverless APIs**: All route handlers (`/api/trains/[id]/eta`, `/api/network/analyze`, `/api/recommend`, `/api/simulate`, `/api/pnr/status`, `/api/sms/inbound`) execute within standard Vercel serverless functions with fast sub-100ms response times.
-3. **Zero Heavy CSV Bundling**: Large raw CSVs (`ir_train.csv`, Spark partitions) are excluded from the Vercel production bundle via `.vercelignore` and `.gitignore`.
+TrackPulse is engineered from the ground up for seamless serverless deployment on Vercel:
+1. **Lightweight Production Bundle**: Machine learning training artifacts and seed data are structured into compact, memory-efficient JSON structures (`< 25MB`).
+2. **Optimized Serverless APIs**: All route handlers (`/api/trains/[id]/eta`, `/api/network/analyze`, `/api/recommend`, `/api/simulate`, `/api/pnr/status`, `/api/sms/inbound`) execute within standard Vercel serverless functions with fast sub-50ms response times.
+3. **Trace Inclusions**: Configured with `outputFileTracingIncludes` in `next.config.mjs` ensuring all canonical schedules and ML weights are bundled into Vercel Lambdas.
+4. **Zero Heavy CSV Bundling**: Large raw CSVs and intermediate notebook caches are excluded from the Vercel production bundle via `.vercelignore` and `.gitignore`.
 
 ---
 
-## Deployment Steps
+## Deployment Options
 
-### 1. Direct CLI Deployment
+### Option 1: Automatic Continuous Deployment (Recommended)
+1. Push code to the repository: [https://github.com/kishore-in2007/TrackPulse](https://github.com/kishore-in2007/TrackPulse)
+2. Log in to [Vercel Dashboard](https://vercel.com/new).
+3. Select **"Import Project"** and choose `TrackPulse`.
+4. Framework Preset: **Next.js** (auto-detected).
+5. Root Directory: `./` (or leave default).
+6. Click **Deploy**. Vercel will automatically build and deploy the app with instant edge CDN distribution.
+
+### Option 2: Deploy via Vercel CLI
 ```bash
-# Install Vercel CLI if needed
+# Install Vercel CLI (if not already installed)
 npm install -g vercel
 
-# Deploy directly to Vercel
+# Deploy directly from the project directory
 vercel
-```
 
-### 2. GitHub / Vercel Web Dashboard
-1. Push this repository to GitHub.
-2. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
-3. Import the GitHub repository.
-4. Framework Preset: **Next.js**.
-5. Build Command: `npm run build`.
-6. Output Directory: `.next`.
-7. Click **Deploy**.
+# Deploy to production domain
+vercel --prod
+```
 
 ---
 
-## Environment Variables
-Create `.env.local` for local development:
+## Environment Variables (Optional)
+The system works out-of-the-box with high-fidelity simulated telemetry. If connecting external services, configure these in the **Vercel Project Settings > Environment Variables**:
+
 ```env
 NEXT_PUBLIC_APP_NAME=TrackPulse
 NEXT_PUBLIC_ENVIRONMENT=production
+
+# Optional external live feeds:
+CRIS_API_KEY=
+RAPIDAPI_KEY=
+OPENWEATHER_API_KEY=
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+TWILIO_PHONE_NUMBER=
 ```
+

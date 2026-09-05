@@ -76,10 +76,11 @@ function recordTest(category, name, passed, details = {}) {
     console.log(`  \x1b[32m✔\x1b[0m [${category}] ${name} (${details.durationMs ? details.durationMs.toFixed(1) + 'ms' : 'OK'})`);
   } else {
     results.failed++;
-    console.error(`  \x1b[31m✖\x1b[0m [${category}] ${name}: ${details.error || 'Assertion failed'}`);
+    console.error(`  \x1b[31m✖\x1b[0m [${category}] ${name}: ${details.error || `Assertion failed (status: ${details.status}, bytes: ${details.bytes})`}`);
   }
   results.tests.push({ category, name, passed, ...details });
 }
+
 
 async function runAnalysis() {
   console.log('======================================================================');
