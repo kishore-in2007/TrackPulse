@@ -1,0 +1,10 @@
+*.csv
+*.csv.zip
+*.json.zip
+data_audit/
+part-*
+EXP-TRAINS.json
+PASS-TRAINS.json
+SF-TRAINS.json
+.git
+.agents

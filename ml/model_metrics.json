@@ -1,0 +1,49 @@
+{
+  "roc_auc": 0.9205,
+  "pr_auc": 0.9671,
+  "brier_score": 0.0988,
+  "log_loss": 0.3141,
+  "best_iteration": 293,
+  "top_features": [
+    {
+      "feature": "route_historical_ontime_pct",
+      "importance": 237120.91
+    },
+    {
+      "feature": "season_severity_score",
+      "importance": 182766.05
+    },
+    {
+      "feature": "late_incoming_rake",
+      "importance": 150573.97
+    },
+    {
+      "feature": "train_type",
+      "importance": 98740.25
+    },
+    {
+      "feature": "season",
+      "importance": 66836.97
+    },
+    {
+      "feature": "track_doubled",
+      "importance": 57742.93
+    },
+    {
+      "feature": "is_monsoon_season",
+      "importance": 55917.95
+    },
+    {
+      "feature": "zone_congestion_index",
+      "importance": 42160.01
+    },
+    {
+      "feature": "loco_age_years",
+      "importance": 28974.84
+    },
+    {
+      "feature": "month",
+      "importance": 20054.29
+    }
+  ]
+}

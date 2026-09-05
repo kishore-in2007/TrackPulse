@@ -1,0 +1,122 @@
+[
+  {
+    "step": 0,
+    "simulated_time": "17:00",
+    "train_id": "12675",
+    "current_station": "KPD",
+    "next_station": "AJJ",
+    "current_delay_min": 12,
+    "distance_remaining_km": 130,
+    "speed_kmh": 78
+  },
+  {
+    "step": 1,
+    "simulated_time": "17:30",
+    "train_id": "12675",
+    "current_station": "AJJ",
+    "next_station": "PER",
+    "current_delay_min": 15,
+    "distance_remaining_km": 68,
+    "speed_kmh": 65
+  },
+  {
+    "step": 2,
+    "simulated_time": "18:00",
+    "train_id": "12675",
+    "current_station": "PER",
+    "next_station": "MAS",
+    "current_delay_min": 18,
+    "distance_remaining_km": 12,
+    "speed_kmh": 40
+  },
+  {
+    "step": 3,
+    "simulated_time": "18:38",
+    "train_id": "12675",
+    "current_station": "MAS",
+    "next_station": "TERMINAL",
+    "current_delay_min": 18,
+    "distance_remaining_km": 0,
+    "speed_kmh": 0
+  },
+  {
+    "step": 0,
+    "simulated_time": "17:00",
+    "train_id": "12007",
+    "current_station": "AB",
+    "next_station": "KPD",
+    "current_delay_min": 5,
+    "distance_remaining_km": 150,
+    "speed_kmh": 85
+  },
+  {
+    "step": 1,
+    "simulated_time": "17:30",
+    "train_id": "12007",
+    "current_station": "KPD",
+    "next_station": "AJJ",
+    "current_delay_min": 8,
+    "distance_remaining_km": 80,
+    "speed_kmh": 80
+  },
+  {
+    "step": 2,
+    "simulated_time": "18:00",
+    "train_id": "12007",
+    "current_station": "AJJ",
+    "next_station": "MAS",
+    "current_delay_min": 6,
+    "distance_remaining_km": 60,
+    "speed_kmh": 82
+  },
+  {
+    "step": 3,
+    "simulated_time": "18:36",
+    "train_id": "12007",
+    "current_station": "MAS",
+    "next_station": "TERMINAL",
+    "current_delay_min": 6,
+    "distance_remaining_km": 0,
+    "speed_kmh": 0
+  },
+  {
+    "step": 0,
+    "simulated_time": "17:00",
+    "train_id": "12622",
+    "current_station": "BZA",
+    "next_station": "GDR",
+    "current_delay_min": 24,
+    "distance_remaining_km": 280,
+    "speed_kmh": 72
+  },
+  {
+    "step": 1,
+    "simulated_time": "17:30",
+    "train_id": "12622",
+    "current_station": "OGL",
+    "next_station": "GDR",
+    "current_delay_min": 28,
+    "distance_remaining_km": 190,
+    "speed_kmh": 68
+  },
+  {
+    "step": 2,
+    "simulated_time": "18:00",
+    "train_id": "12622",
+    "current_station": "GDR",
+    "next_station": "MAS",
+    "current_delay_min": 32,
+    "distance_remaining_km": 138,
+    "speed_kmh": 60
+  },
+  {
+    "step": 3,
+    "simulated_time": "18:45",
+    "train_id": "12622",
+    "current_station": "NYP",
+    "next_station": "MAS",
+    "current_delay_min": 35,
+    "distance_remaining_km": 40,
+    "speed_kmh": 55
+  }
+]

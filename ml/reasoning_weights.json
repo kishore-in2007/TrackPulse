@@ -1,0 +1,333 @@
+{
+  "model": "LightGBM TreeSHAP Feature Attribution Engine",
+  "total_features_modeled": 40,
+  "total_gain": 1056216.27,
+  "features": {
+    "train_number": {
+      "feature": "train_number",
+      "gain": 3963.79,
+      "split_count": 220,
+      "normalized_importance": 0.0038,
+      "tier": "HISTORICAL",
+      "baseline_value": 12649.0
+    },
+    "train_type": {
+      "feature": "train_type",
+      "gain": 98740.25,
+      "split_count": 956,
+      "normalized_importance": 0.0935,
+      "tier": "HISTORICAL",
+      "baseline_value": 0
+    },
+    "year": {
+      "feature": "year",
+      "gain": 443.31,
+      "split_count": 46,
+      "normalized_importance": 0.0004,
+      "tier": "HISTORICAL",
+      "baseline_value": 2021.0
+    },
+    "month": {
+      "feature": "month",
+      "gain": 20054.29,
+      "split_count": 67,
+      "normalized_importance": 0.019,
+      "tier": "HISTORICAL",
+      "baseline_value": 7.0
+    },
+    "day_of_week": {
+      "feature": "day_of_week",
+      "gain": 839.27,
+      "split_count": 79,
+      "normalized_importance": 0.0008,
+      "tier": "OBSERVED",
+      "baseline_value": 3.0
+    },
+    "departure_hour": {
+      "feature": "departure_hour",
+      "gain": 1544.71,
+      "split_count": 143,
+      "normalized_importance": 0.0015,
+      "tier": "OBSERVED",
+      "baseline_value": 14.0
+    },
+    "is_weekend": {
+      "feature": "is_weekend",
+      "gain": 104.17,
+      "split_count": 9,
+      "normalized_importance": 0.0001,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "is_night_departure": {
+      "feature": "is_night_departure",
+      "gain": 2653.75,
+      "split_count": 80,
+      "normalized_importance": 0.0025,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "is_peak_hour": {
+      "feature": "is_peak_hour",
+      "gain": 43.9,
+      "split_count": 4,
+      "normalized_importance": 0.0,
+      "tier": "OBSERVED",
+      "baseline_value": 0.0
+    },
+    "is_festival_season": {
+      "feature": "is_festival_season",
+      "gain": 8296.49,
+      "split_count": 145,
+      "normalized_importance": 0.0079,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "season": {
+      "feature": "season",
+      "gain": 66836.97,
+      "split_count": 108,
+      "normalized_importance": 0.0633,
+      "tier": "HISTORICAL",
+      "baseline_value": 0
+    },
+    "zone": {
+      "feature": "zone",
+      "gain": 14527.26,
+      "split_count": 645,
+      "normalized_importance": 0.0138,
+      "tier": "NETWORK",
+      "baseline_value": 0
+    },
+    "zone_abbr": {
+      "feature": "zone_abbr",
+      "gain": 2942.04,
+      "split_count": 157,
+      "normalized_importance": 0.0028,
+      "tier": "NETWORK",
+      "baseline_value": 0
+    },
+    "source_station_category": {
+      "feature": "source_station_category",
+      "gain": 582.67,
+      "split_count": 60,
+      "normalized_importance": 0.0006,
+      "tier": "HISTORICAL",
+      "baseline_value": 0
+    },
+    "destination_station_category": {
+      "feature": "destination_station_category",
+      "gain": 527.4,
+      "split_count": 53,
+      "normalized_importance": 0.0005,
+      "tier": "HISTORICAL",
+      "baseline_value": 0
+    },
+    "distance_km": {
+      "feature": "distance_km",
+      "gain": 2548.47,
+      "split_count": 198,
+      "normalized_importance": 0.0024,
+      "tier": "INFERRED",
+      "baseline_value": 544.0
+    },
+    "num_scheduled_stops": {
+      "feature": "num_scheduled_stops",
+      "gain": 2205.44,
+      "split_count": 195,
+      "normalized_importance": 0.0021,
+      "tier": "HISTORICAL",
+      "baseline_value": 12.0
+    },
+    "scheduled_travel_hours": {
+      "feature": "scheduled_travel_hours",
+      "gain": 7211.53,
+      "split_count": 393,
+      "normalized_importance": 0.0068,
+      "tier": "OBSERVED",
+      "baseline_value": 9.62
+    },
+    "track_doubled": {
+      "feature": "track_doubled",
+      "gain": 57742.93,
+      "split_count": 379,
+      "normalized_importance": 0.0547,
+      "tier": "HISTORICAL",
+      "baseline_value": 1.0
+    },
+    "is_hdn_route": {
+      "feature": "is_hdn_route",
+      "gain": 5295.77,
+      "split_count": 122,
+      "normalized_importance": 0.005,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "traction_type": {
+      "feature": "traction_type",
+      "gain": 9645.78,
+      "split_count": 162,
+      "normalized_importance": 0.0091,
+      "tier": "HISTORICAL",
+      "baseline_value": 0
+    },
+    "is_electrified": {
+      "feature": "is_electrified",
+      "gain": 1883.84,
+      "split_count": 34,
+      "normalized_importance": 0.0018,
+      "tier": "HISTORICAL",
+      "baseline_value": 1.0
+    },
+    "psr_count": {
+      "feature": "psr_count",
+      "gain": 3007.84,
+      "split_count": 181,
+      "normalized_importance": 0.0028,
+      "tier": "HISTORICAL",
+      "baseline_value": 3.0
+    },
+    "is_circular_route": {
+      "feature": "is_circular_route",
+      "gain": 70.69,
+      "split_count": 8,
+      "normalized_importance": 0.0001,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "is_monsoon_season": {
+      "feature": "is_monsoon_season",
+      "gain": 55917.95,
+      "split_count": 185,
+      "normalized_importance": 0.0529,
+      "tier": "INFERRED",
+      "baseline_value": 0.0
+    },
+    "is_fog_risk": {
+      "feature": "is_fog_risk",
+      "gain": 4281.05,
+      "split_count": 43,
+      "normalized_importance": 0.0041,
+      "tier": "INFERRED",
+      "baseline_value": 0.0
+    },
+    "fog_risk_score": {
+      "feature": "fog_risk_score",
+      "gain": 7495.93,
+      "split_count": 202,
+      "normalized_importance": 0.0071,
+      "tier": "INFERRED",
+      "baseline_value": 0.0
+    },
+    "zone_fog_index": {
+      "feature": "zone_fog_index",
+      "gain": 270.72,
+      "split_count": 20,
+      "normalized_importance": 0.0003,
+      "tier": "INFERRED",
+      "baseline_value": 0.22
+    },
+    "zone_congestion_index": {
+      "feature": "zone_congestion_index",
+      "gain": 42160.01,
+      "split_count": 334,
+      "normalized_importance": 0.0399,
+      "tier": "NETWORK",
+      "baseline_value": 0.75
+    },
+    "season_severity_score": {
+      "feature": "season_severity_score",
+      "gain": 182766.05,
+      "split_count": 513,
+      "normalized_importance": 0.173,
+      "tier": "INFERRED",
+      "baseline_value": 0.65
+    },
+    "loco_age_years": {
+      "feature": "loco_age_years",
+      "gain": 28974.84,
+      "split_count": 671,
+      "normalized_importance": 0.0274,
+      "tier": "INFERRED",
+      "baseline_value": 13.4
+    },
+    "coach_age_years": {
+      "feature": "coach_age_years",
+      "gain": 12284.86,
+      "split_count": 482,
+      "normalized_importance": 0.0116,
+      "tier": "INFERRED",
+      "baseline_value": 21.3
+    },
+    "has_lhb_coaches": {
+      "feature": "has_lhb_coaches",
+      "gain": 8982.65,
+      "split_count": 142,
+      "normalized_importance": 0.0085,
+      "tier": "HISTORICAL",
+      "baseline_value": 1.0
+    },
+    "is_rake_shared": {
+      "feature": "is_rake_shared",
+      "gain": 8764.13,
+      "split_count": 133,
+      "normalized_importance": 0.0083,
+      "tier": "NETWORK",
+      "baseline_value": 0.0
+    },
+    "maintenance_score": {
+      "feature": "maintenance_score",
+      "gain": 2252.33,
+      "split_count": 220,
+      "normalized_importance": 0.0021,
+      "tier": "INFERRED",
+      "baseline_value": 6.5
+    },
+    "seat_utilisation_pct": {
+      "feature": "seat_utilisation_pct",
+      "gain": 2549.25,
+      "split_count": 259,
+      "normalized_importance": 0.0024,
+      "tier": "HISTORICAL",
+      "baseline_value": 73.5
+    },
+    "is_overloaded": {
+      "feature": "is_overloaded",
+      "gain": 0.0,
+      "split_count": 0,
+      "normalized_importance": 0.0,
+      "tier": "HISTORICAL",
+      "baseline_value": 0.0
+    },
+    "late_incoming_rake": {
+      "feature": "late_incoming_rake",
+      "gain": 150573.97,
+      "split_count": 446,
+      "normalized_importance": 0.1426,
+      "tier": "NETWORK",
+      "baseline_value": 0.0
+    },
+    "is_special_train": {
+      "feature": "is_special_train",
+      "gain": 109.08,
+      "split_count": 11,
+      "normalized_importance": 0.0001,
+      "tier": "NETWORK",
+      "baseline_value": 0.0
+    },
+    "route_historical_ontime_pct": {
+      "feature": "route_historical_ontime_pct",
+      "gain": 237120.91,
+      "split_count": 685,
+      "normalized_importance": 0.2245,
+      "tier": "OBSERVED",
+      "baseline_value": 63.2
+    }
+  },
+  "rules": {
+    "max_recovery_rate_pct": 0.08,
+    "monsoon_risk_multiplier": 1.25,
+    "fog_risk_multiplier": 1.4,
+    "late_rake_shortfall_ratio": 1.0
+  }
+}

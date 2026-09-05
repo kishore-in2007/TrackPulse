@@ -1,0 +1,53 @@
+{
+  "1234567890": {
+    "pnr": "1234567890",
+    "passenger_name": "R. Sharma & 1 Other",
+    "train_id": "12675",
+    "train_number": "12675",
+    "train_name": "Kovai Express",
+    "source": "MAS",
+    "destination": "CBE",
+    "boarding_station": "MAS",
+    "destination_station": "CBE",
+    "booking_status": "CONFIRMED",
+    "coach": "B2",
+    "berth": "34, 35",
+    "journey_date": "2026-09-10",
+    "scheduled_departure": "06:10",
+    "scheduled_arrival": "14:05"
+  },
+  "9876543210": {
+    "pnr": "9876543210",
+    "passenger_name": "P. Iyer",
+    "train_id": "12007",
+    "train_number": "12007",
+    "train_name": "Mysore Shatabdi",
+    "source": "MAS",
+    "destination": "SBC",
+    "boarding_station": "MAS",
+    "destination_station": "SBC",
+    "booking_status": "CONFIRMED",
+    "coach": "C1",
+    "berth": "12",
+    "journey_date": "2026-09-10",
+    "scheduled_departure": "06:00",
+    "scheduled_arrival": "10:50"
+  },
+  "4567890123": {
+    "pnr": "4567890123",
+    "passenger_name": "A. Kumar",
+    "train_id": "12622",
+    "train_number": "12622",
+    "train_name": "Tamil Nadu Express",
+    "source": "NDLS",
+    "destination": "MAS",
+    "boarding_station": "BPL",
+    "destination_station": "MAS",
+    "booking_status": "CONFIRMED",
+    "coach": "A1",
+    "berth": "21",
+    "journey_date": "2026-09-10",
+    "scheduled_departure": "06:40",
+    "scheduled_arrival": "18:40"
+  }
+}
