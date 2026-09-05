@@ -93,23 +93,22 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
     : isShatabdi
     ? ['EC', 'CC']
     : ['1A', '2A', '3A', 'SL', '2S', 'GN'];
-
   return (
-    <div className="glass-panel rounded-2xl border border-irctc-border bg-slate-900/90 shadow-xl overflow-hidden space-y-6">
+    <div className="bg-white rounded-2xl border border-slate-300 shadow-md overflow-hidden space-y-6">
       {/* Top Banner with IRCTC Header Styling */}
-      <div className="bg-gradient-to-r from-irctc-navy via-irctc-blue to-slate-900 p-5 sm:p-6 border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-[#082b4c] via-[#0b3b60] to-[#082b4c] p-5 sm:p-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4 text-white">
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-1">
             <span className="text-2xl sm:text-3xl font-black text-white font-mono">{eta.train_number}</span>
-            <span className="text-xl sm:text-2xl font-bold text-slate-100">{eta.train_name}</span>
-            <span className="px-2.5 py-0.5 rounded-full bg-irctc-saffron/20 border border-irctc-saffron/40 text-irctc-saffron text-xs font-bold font-mono">
+            <span className="text-xl sm:text-2xl font-bold text-white">{eta.train_name}</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#ea580c] text-white text-xs font-bold font-mono shadow-xs">
               {eta.train_type.toUpperCase()}
             </span>
           </div>
-          <div className="text-xs sm:text-sm text-slate-300 flex items-center space-x-2 font-medium">
+          <div className="text-xs sm:text-sm text-slate-200 flex items-center space-x-2 font-medium">
             <span>{eta.source_station_name} ({eta.source_station})</span>
-            <span className="text-irctc-saffron">━━━━▶</span>
-            <span>{eta.destination_station_name} ({eta.destination_station})</span>
+            <span className="text-[#ff9933]">━━━━▶</span>
+            <span className="font-bold text-white">{eta.destination_station_name} ({eta.destination_station})</span>
           </div>
         </div>
 
@@ -117,12 +116,12 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
         <div className="flex flex-col sm:items-end space-y-2">
           {/* Running Days */}
           <div className="flex items-center space-x-1">
-            <span className="text-[11px] text-slate-400 font-mono mr-1">RUNS ON:</span>
+            <span className="text-[11px] text-slate-300 font-mono mr-1">RUNS ON:</span>
             {runningDays.map((rd, i) => (
               <span
                 key={i}
-                className={`h-5 w-5 rounded text-[10px] font-black flex items-center justify-center font-mono ${
-                  rd.active ? 'bg-irctc-saffron text-white' : 'bg-slate-800 text-slate-500'
+                className={`h-5 w-5 rounded text-[10px] font-black flex items-center justify-center font-mono shadow-xs ${
+                  rd.active ? 'bg-[#ea580c] text-white' : 'bg-white/15 text-slate-300'
                 }`}
               >
                 {rd.day}
@@ -132,11 +131,11 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
 
           {/* Classes */}
           <div className="flex flex-wrap items-center gap-1">
-            <span className="text-[11px] text-slate-400 font-mono mr-1">CLASSES:</span>
+            <span className="text-[11px] text-slate-300 font-mono mr-1">CLASSES:</span>
             {travelClasses.map((cls) => (
               <span
                 key={cls}
-                className="px-1.5 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700 text-[10px] font-bold font-mono"
+                className="px-2 py-0.5 rounded bg-white/15 text-white border border-white/20 text-[10px] font-black font-mono"
               >
                 {cls}
               </span>
@@ -147,48 +146,48 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
 
       {/* Quick Service Highlights Bar */}
       <div className="px-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-        <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5 flex items-center space-x-2.5">
-          <Utensils className="h-5 w-5 text-irctc-saffron flex-shrink-0" />
+        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center space-x-2.5 shadow-2xs">
+          <Utensils className="h-5 w-5 text-[#ea580c] flex-shrink-0" />
           <div>
-            <span className="text-slate-400 text-[10px] block">CATERING</span>
-            <span className="text-white font-bold text-xs">Pantry Car & E-Catering</span>
+            <span className="text-slate-500 text-[10px] block font-bold">CATERING</span>
+            <span className="text-slate-900 font-bold text-xs">Pantry Car & E-Catering</span>
           </div>
         </div>
 
-        <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5 flex items-center space-x-2.5">
-          <Star className="h-5 w-5 text-amber-400 flex-shrink-0 fill-amber-400" />
+        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center space-x-2.5 shadow-2xs">
+          <Star className="h-5 w-5 text-amber-500 flex-shrink-0 fill-amber-500" />
           <div>
-            <span className="text-slate-400 text-[10px] block">PUNCTUALITY RATING</span>
-            <span className="text-white font-bold text-xs">4.6 / 5.0 (High)</span>
+            <span className="text-slate-500 text-[10px] block font-bold">PUNCTUALITY RATING</span>
+            <span className="text-slate-900 font-bold text-xs">4.6 / 5.0 (High)</span>
           </div>
         </div>
 
-        <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5 flex items-center space-x-2.5">
-          <Zap className="h-5 w-5 text-emerald-400 flex-shrink-0" />
+        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center space-x-2.5 shadow-2xs">
+          <Zap className="h-5 w-5 text-emerald-600 flex-shrink-0" />
           <div>
-            <span className="text-slate-400 text-[10px] block">AVG OPERATING SPEED</span>
-            <span className="text-emerald-400 font-bold text-xs">84 km/h (MPS: 140)</span>
+            <span className="text-slate-500 text-[10px] block font-bold">AVG OPERATING SPEED</span>
+            <span className="text-emerald-700 font-black text-xs">84 km/h (MPS: 140)</span>
           </div>
         </div>
 
-        <div className="p-3 rounded-xl bg-slate-950/60 border border-white/5 flex items-center space-x-2.5">
-          <ShieldCheck className="h-5 w-5 text-sky-400 flex-shrink-0" />
+        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center space-x-2.5 shadow-2xs">
+          <ShieldCheck className="h-5 w-5 text-[#0b3b60] flex-shrink-0" />
           <div>
-            <span className="text-slate-400 text-[10px] block">CLEANLINESS</span>
-            <span className="text-sky-300 font-bold text-xs">4.7 / 5.0 (OBHS Active)</span>
+            <span className="text-slate-500 text-[10px] block font-bold">CLEANLINESS</span>
+            <span className="text-[#082b4c] font-black text-xs">4.7 / 5.0 (OBHS Active)</span>
           </div>
         </div>
       </div>
 
       {/* Details Navigation Tabs */}
       <div className="px-6">
-        <div className="flex flex-wrap items-center space-x-2 border-b border-white/10 pb-3 text-xs font-bold font-mono">
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-3 text-xs font-bold font-mono">
           <button
             onClick={() => setActiveTab('HALTS')}
             className={`px-3.5 py-2 rounded-lg transition-all ${
               activeTab === 'HALTS'
-                ? 'bg-irctc-saffron text-white shadow-md'
-                : 'text-slate-400 hover:text-white bg-slate-800/60'
+                ? 'bg-[#ea580c] text-white shadow-sm'
+                : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
             INTERMEDIATE HALTS TIMETABLE ({eta.section_timeline.length + 1} STATIONS)
@@ -198,8 +197,8 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
             onClick={() => setActiveTab('COACHES')}
             className={`px-3.5 py-2 rounded-lg transition-all ${
               activeTab === 'COACHES'
-                ? 'bg-irctc-saffron text-white shadow-md'
-                : 'text-slate-400 hover:text-white bg-slate-800/60'
+                ? 'bg-[#ea580c] text-white shadow-sm'
+                : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
             COACH POSITION & RAKE COMPOSITION
@@ -209,8 +208,8 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
             onClick={() => setActiveTab('SPECS')}
             className={`px-3.5 py-2 rounded-lg transition-all ${
               activeTab === 'SPECS'
-                ? 'bg-irctc-saffron text-white shadow-md'
-                : 'text-slate-400 hover:text-white bg-slate-800/60'
+                ? 'bg-[#ea580c] text-white shadow-sm'
+                : 'text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200'
             }`}
           >
             LOCOMOTIVE & TRACK SPECS
@@ -221,34 +220,34 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
       {/* Tab 1: Comprehensive Intermediate Halts Table */}
       {activeTab === 'HALTS' && (
         <div className="px-6 pb-6 space-y-3">
-          <div className="overflow-x-auto rounded-xl border border-white/10">
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
             <table className="w-full text-left text-xs font-mono">
-              <thead className="bg-slate-950 text-slate-300 uppercase text-[11px] border-b border-white/10">
+              <thead className="bg-[#0b3b60] text-white uppercase text-[11px] border-b border-slate-200">
                 <tr>
                   <th className="py-3 px-3">#</th>
                   <th className="py-3 px-3">Station Code & Name</th>
                   <th className="py-3 px-3">Platform</th>
                   <th className="py-3 px-3">Distance</th>
                   <th className="py-3 px-3">Sched. Arr / Dep</th>
-                  <th className="py-3 px-3">Dynamic Pred. Arr / Dep</th>
+                  <th className="py-3 px-3 text-[#ff9933]">Dynamic Pred. Arr / Dep</th>
                   <th className="py-3 px-3">Halt</th>
                   <th className="py-3 px-3">Live Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-slate-200">
                 {/* Origin Stop */}
-                <tr className="bg-slate-900/40 hover:bg-slate-900/80">
-                  <td className="py-2.5 px-3 font-bold text-slate-400">1</td>
-                  <td className="py-2.5 px-3 font-bold text-white">
+                <tr className="bg-white hover:bg-slate-50">
+                  <td className="py-2.5 px-3 font-bold text-slate-500">1</td>
+                  <td className="py-2.5 px-3 font-bold text-slate-900">
                     {eta.source_station_name} ({eta.source_station})
                   </td>
-                  <td className="py-2.5 px-3 text-slate-300">PF 1</td>
-                  <td className="py-2.5 px-3 text-slate-400">0 km</td>
-                  <td className="py-2.5 px-3 text-slate-300">-- : -- / {eta.section_timeline[0]?.expected_departure || '06:10'}</td>
-                  <td className="py-2.5 px-3 text-emerald-400 font-bold">Departed on time</td>
-                  <td className="py-2.5 px-3 text-slate-400">Origin</td>
+                  <td className="py-2.5 px-3 text-slate-600">PF 1</td>
+                  <td className="py-2.5 px-3 text-slate-500">0 km</td>
+                  <td className="py-2.5 px-3 text-slate-600">-- : -- / {eta.section_timeline[0]?.expected_departure || '06:10'}</td>
+                  <td className="py-2.5 px-3 text-emerald-700 font-black">Departed on time</td>
+                  <td className="py-2.5 px-3 text-slate-500">Origin</td>
                   <td className="py-2.5 px-3">
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                    <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300 text-[10px] font-bold">
                       DEPARTED
                     </span>
                   </td>
@@ -263,43 +262,43 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
                       key={sec.to_station}
                       className={`transition-colors ${
                         isCurrent
-                          ? 'bg-sky-500/15 font-semibold text-white'
+                          ? 'bg-blue-50/90 font-semibold'
                           : isNext
-                          ? 'bg-amber-500/10'
-                          : 'hover:bg-slate-900/60'
-                      }`}
+                          ? 'bg-amber-50/70'
+                          : idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'
+                      } hover:bg-sky-50/50`}
                     >
-                      <td className="py-2.5 px-3 font-bold text-slate-400">{idx + 2}</td>
-                      <td className="py-2.5 px-3 font-bold text-white flex items-center space-x-1.5">
+                      <td className="py-2.5 px-3 font-bold text-slate-500">{idx + 2}</td>
+                      <td className="py-2.5 px-3 font-bold text-slate-900 flex items-center space-x-1.5">
                         <span>{sec.to_station_name} ({sec.to_station})</span>
                         {isCurrent && (
-                          <span className="px-1.5 py-0.2 rounded bg-sky-500 text-slate-950 text-[9px] font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-[#0b3b60] text-white text-[9px] font-bold">
                             CURRENT
                           </span>
                         )}
                         {isNext && (
-                          <span className="px-1.5 py-0.2 rounded bg-amber-500 text-slate-950 text-[9px] font-bold">
+                          <span className="px-1.5 py-0.5 rounded bg-[#ea580c] text-white text-[9px] font-bold">
                             NEXT
                           </span>
                         )}
                       </td>
-                      <td className="py-2.5 px-3 text-slate-300">PF {(idx % 4) + 1}</td>
-                      <td className="py-2.5 px-3 text-slate-400">+{sec.distance_km} km</td>
-                      <td className="py-2.5 px-3 text-slate-300 font-medium">
+                      <td className="py-2.5 px-3 text-slate-600">PF {(idx % 4) + 1}</td>
+                      <td className="py-2.5 px-3 text-slate-500">+{sec.distance_km} km</td>
+                      <td className="py-2.5 px-3 text-slate-700 font-medium">
                         {sec.expected_arrival} / {sec.expected_departure}
                       </td>
-                      <td className="py-2.5 px-3 text-sky-300 font-bold">
+                      <td className="py-2.5 px-3 text-[#082b4c] font-black">
                         {sec.expected_arrival} (P10: {sec.p10_runtime_min}m)
                       </td>
-                      <td className="py-2.5 px-3 text-slate-400">2 min</td>
+                      <td className="py-2.5 px-3 text-slate-500">2 min</td>
                       <td className="py-2.5 px-3">
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                             sec.delay_minutes > 15
-                              ? 'bg-red-500/20 text-red-400'
+                              ? 'bg-red-50 text-red-700 border border-red-300'
                               : sec.delay_minutes > 5
-                              ? 'bg-amber-500/20 text-amber-400'
-                              : 'bg-emerald-500/20 text-emerald-400'
+                              ? 'bg-amber-50 text-amber-800 border border-amber-300'
+                              : 'bg-emerald-50 text-emerald-800 border border-emerald-300'
                           }`}
                         >
                           +{sec.delay_minutes}m Late
@@ -317,9 +316,9 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
       {/* Tab 2: Visual Coach Position & Composition */}
       {activeTab === 'COACHES' && (
         <div className="px-6 pb-6 space-y-4">
-          <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
-            <span>ENGINE DIRECTION ━━━━▶</span>
-            <span>TOTAL RAKE: {coachComposition.length} COACHES</span>
+          <div className="flex items-center justify-between text-xs text-slate-600 font-mono font-bold">
+            <span className="text-[#ea580c]">ENGINE DIRECTION ━━━━▶</span>
+            <span className="text-slate-800">TOTAL RAKE: {coachComposition.length} COACHES</span>
           </div>
 
           <div className="overflow-x-auto pb-2">
@@ -327,22 +326,22 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
               {coachComposition.map((c, i) => (
                 <div
                   key={i}
-                  className={`p-3 rounded-lg border border-white/10 flex flex-col items-center justify-between text-center min-w-[72px] h-24 ${c.color} shadow-md`}
+                  className={`p-3 rounded-lg border border-slate-300 flex flex-col items-center justify-between text-center min-w-[72px] h-24 ${c.color} shadow-sm`}
                 >
-                  <span className="text-[10px] font-bold opacity-80 uppercase">{c.class}</span>
+                  <span className="text-[10px] font-bold opacity-90 uppercase">{c.class}</span>
                   <span className="text-base font-black font-mono tracking-wider">{c.code}</span>
-                  <span className="text-[9px] opacity-90 truncate max-w-[64px]">{c.type.split(' ')[0]}</span>
+                  <span className="text-[9px] opacity-95 truncate max-w-[64px] font-medium">{c.type.split(' ')[0]}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-3 bg-slate-950/60 rounded-lg text-xs text-slate-300 font-mono flex items-center justify-between">
+          <div className="p-3 bg-slate-50 rounded-lg text-xs text-slate-700 font-mono flex items-center justify-between border border-slate-200">
             <div className="flex items-center space-x-2">
-              <Info className="h-4 w-4 text-irctc-saffron" />
+              <Info className="h-4 w-4 text-[#ea580c]" />
               <span>Standard LHB Center Buffer Coupler (CBC) with On-Board Housekeeping (OBHS)</span>
             </div>
-            <span className="text-emerald-400 font-bold">Bio-Vacuum Toilets Equipped</span>
+            <span className="text-emerald-700 font-bold">Bio-Vacuum Toilets Equipped</span>
           </div>
         </div>
       )}
@@ -351,21 +350,21 @@ export default function IRCTCTrainDetailView({ eta }: IRCTCTrainDetailViewProps)
       {activeTab === 'SPECS' && (
         <div className="px-6 pb-6 space-y-4 font-mono text-xs">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-3 bg-slate-950/60 rounded-xl border border-white/5 space-y-1">
-              <span className="text-slate-400 text-[10px] block">PRIMARY TRACTION</span>
-              <span className="text-white font-bold">{eta.technical_dimensions?.tractionType || '25 kV AC 50 Hz Electric'}</span>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+              <span className="text-slate-500 text-[10px] block font-bold">PRIMARY TRACTION</span>
+              <span className="text-slate-900 font-bold">{eta.technical_dimensions?.tractionType || '25 kV AC 50 Hz Electric'}</span>
             </div>
-            <div className="p-3 bg-slate-950/60 rounded-xl border border-white/5 space-y-1">
-              <span className="text-slate-400 text-[10px] block">LOCO CLASS</span>
-              <span className="text-sky-300 font-bold">{eta.technical_dimensions?.locoType || 'WAP-7 (6000 HP)'}</span>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+              <span className="text-slate-500 text-[10px] block font-bold">LOCO CLASS</span>
+              <span className="text-[#082b4c] font-black">{eta.technical_dimensions?.locoType || 'WAP-7 (6000 HP)'}</span>
             </div>
-            <div className="p-3 bg-slate-950/60 rounded-xl border border-white/5 space-y-1">
-              <span className="text-slate-400 text-[10px] block">GROSS TONNAGE</span>
-              <span className="text-amber-300 font-bold">{eta.technical_dimensions?.grossWeightTonnes || 1220} Tonnes</span>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+              <span className="text-slate-500 text-[10px] block font-bold">GROSS TONNAGE</span>
+              <span className="text-amber-800 font-black">{eta.technical_dimensions?.grossWeightTonnes || 1220} Tonnes</span>
             </div>
-            <div className="p-3 bg-slate-950/60 rounded-xl border border-white/5 space-y-1">
-              <span className="text-slate-400 text-[10px] block">BRAKING SYSTEM</span>
-              <span className="text-emerald-400 font-bold">Axle Disc + Anti-Skid WSP</span>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+              <span className="text-slate-500 text-[10px] block font-bold">BRAKING SYSTEM</span>
+              <span className="text-emerald-700 font-bold">Axle Disc + Anti-Skid WSP</span>
             </div>
           </div>
         </div>

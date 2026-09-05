@@ -40,27 +40,27 @@ export default function UniversalTrainPicker({ onSelectTrain, selectedTrainId = 
   }, [searchTerm, activeFilter]);
 
   return (
-    <div className="glass-panel rounded-xl p-5 border border-white/10 space-y-4">
+    <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
       {/* Header & Live Filter */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center space-x-2">
-          <Train className="h-5 w-5 text-sky-400" />
+          <Train className="h-5 w-5 text-[#0b3b60]" />
           <div>
-            <h3 className="text-sm font-bold text-white font-mono">SELECT ANY TRAIN (2,810+ INDIAN RAILWAY RAKES)</h3>
-            <p className="text-[11px] text-slate-400">Live dynamic ETA, dimensions, weather, and evidence reasoning</p>
+            <h3 className="text-sm font-bold text-[#082b4c] font-mono">SELECT ANY TRAIN (2,810+ INDIAN RAILWAY RAKES)</h3>
+            <p className="text-[11px] text-slate-500 font-medium">Live dynamic ETA, dimensions, weather, and evidence reasoning</p>
           </div>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center space-x-1.5 bg-slate-900/80 p-1 rounded-lg border border-white/10 text-[11px] font-mono">
+        <div className="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-lg border border-slate-200 text-[11px] font-mono">
           {(['ALL', 'RAJDHANI', 'SHATABDI', 'SUPERFAST'] as const).map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-2.5 py-1 rounded-md transition-all ${
+              className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
                 activeFilter === filter
-                  ? 'bg-sky-500 text-slate-950 font-bold'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#0b3b60] text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               {filter}
@@ -76,7 +76,7 @@ export default function UniversalTrainPicker({ onSelectTrain, selectedTrainId = 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search by train number (e.g. 12952, 12622, 12423) or station code..."
-          className="w-full bg-slate-900 text-white rounded-lg pl-9 pr-4 py-2.5 border border-slate-700 focus:outline-none focus:border-sky-400 text-xs font-mono"
+          className="w-full bg-slate-50 text-slate-900 placeholder:text-slate-400 rounded-lg pl-9 pr-4 py-2.5 border border-slate-300 focus:outline-none focus:border-[#0b3b60] focus:bg-white text-xs font-mono transition-colors"
         />
         <Search className="h-4 w-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
       </div>
@@ -91,22 +91,22 @@ export default function UniversalTrainPicker({ onSelectTrain, selectedTrainId = 
               onClick={() => onSelectTrain && onSelectTrain(tr.id)}
               className={`p-3 rounded-lg border text-left transition-all flex flex-col justify-between ${
                 isSelected
-                  ? 'bg-sky-500/20 border-sky-400/80 shadow-md shadow-sky-500/10'
-                  : 'bg-slate-900/50 hover:bg-slate-900 border-white/5 hover:border-white/20'
+                  ? 'bg-blue-50/90 border-[#0b3b60] shadow-sm'
+                  : 'bg-white hover:bg-slate-50 border-slate-200 hover:border-slate-300'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-mono mb-1">
-                  <span className={`font-bold ${isSelected ? 'text-sky-300' : 'text-white'}`}>{tr.id}</span>
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className={`font-black ${isSelected ? 'text-[#082b4c]' : 'text-slate-900'}`}>{tr.id}</span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-medium">
                     {tr.type}
                   </span>
                 </div>
-                <div className="text-xs font-semibold text-slate-200 truncate">{tr.name}</div>
+                <div className="text-xs font-bold text-slate-800 truncate">{tr.name}</div>
               </div>
-              <div className="mt-2 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                <span>{tr.from} → {tr.to}</span>
-                <span className="text-sky-400 font-semibold">{tr.zone}</span>
+              <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                <span className="font-medium">{tr.from} → {tr.to}</span>
+                <span className="text-[#ea580c] font-bold">{tr.zone}</span>
               </div>
             </button>
           );

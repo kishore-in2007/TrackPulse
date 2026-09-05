@@ -96,42 +96,42 @@ export default function SMSPhoneSimulator() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Left Column: Explanatory & Telephony Integration Specs */}
       <div className="lg:col-span-6 space-y-6">
-        <div className="glass-panel rounded-xl p-6 border border-white/10 space-y-4">
-          <div className="flex items-center space-x-2 text-emerald-400">
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs space-y-4">
+          <div className="flex items-center space-x-2 text-emerald-700">
             <Smartphone className="h-5 w-5" />
-            <h2 className="text-lg font-bold text-white">Live Physical & Virtual Keypad Gateway</h2>
+            <h2 className="text-lg font-black text-[#082b4c]">Live Physical & Virtual Keypad Gateway</h2>
           </div>
-          <p className="text-sm text-slate-300 leading-relaxed">
-            The TrackPulse SMS Gateway accepts queries from <strong>any phone number or keypad</strong>. It works via standard SMS short-codes (<span className="text-white font-mono">139</span>) and standard carrier HTTP webhooks (Twilio / Fast2SMS / Textlocal).
+          <p className="text-sm text-slate-700 leading-relaxed font-medium">
+            The TrackPulse SMS Gateway accepts queries from <strong>any phone number or keypad</strong>. It works via standard SMS short-codes (<span className="text-[#082b4c] font-bold font-mono">139</span>) and standard carrier HTTP webhooks (Twilio / Fast2SMS / Textlocal).
           </p>
 
-          <div className="p-3.5 bg-slate-900/80 rounded-lg border border-white/5 space-y-2">
+          <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4" />
+              <span className="text-emerald-800 font-black flex items-center gap-1.5">
+                <CheckCircle className="h-4 w-4 text-emerald-600" />
                 UNIVERSAL KEYPAD SUPPORT
               </span>
-              <span className="text-slate-400">TwiML / JSON Ready</span>
+              <span className="text-slate-500 font-bold">TwiML / JSON Ready</span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed font-medium">
               Accepts 10-digit PNRs, 4/5-digit Train Numbers, or station codes. Use the tactile phone keypad on the right or type directly from any physical keyboard.
             </p>
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <label className="text-slate-400 uppercase">Simulated Mobile Number / Sender ID:</label>
+              <label className="text-slate-600 font-bold uppercase">Simulated Mobile Number / Sender ID:</label>
             </div>
             <input
               type="text"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="w-full bg-slate-900 text-emerald-400 font-mono text-xs px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:border-emerald-400"
+              className="w-full bg-slate-50 text-emerald-800 font-mono text-xs px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-emerald-600 focus:bg-white font-bold"
             />
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 font-mono">
+            <h4 className="text-xs font-black text-[#082b4c] uppercase tracking-wider mb-2.5 font-mono">
               Instant Keypad Shortcuts:
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -142,7 +142,7 @@ export default function SMSPhoneSimulator() {
                     setInputMessage(s.query);
                     handleSend(s.query);
                   }}
-                  className="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all text-left"
+                  className="px-3 py-1.5 rounded-lg text-xs font-mono bg-slate-100 hover:bg-emerald-50 text-slate-700 border border-slate-200 font-bold transition-all text-left"
                 >
                   {s.label}
                 </button>

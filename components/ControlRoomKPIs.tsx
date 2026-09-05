@@ -23,63 +23,63 @@ export default function ControlRoomKPIs({
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
       {/* KPI 1: Monitored Trains */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>ACTIVE TRAINS</span>
-          <Train className="h-3.5 w-3.5 text-sky-400" />
+          <Train className="h-3.5 w-3.5 text-[#0b3b60]" />
         </div>
-        <div className="mt-1.5 text-xl font-bold font-mono text-white">{totalMonitored.toLocaleString()}</div>
-        <div className="text-[10px] text-emerald-400 font-mono mt-0.5">● 100% Tracking</div>
+        <div className="mt-1.5 text-xl font-black font-mono text-[#082b4c]">{totalMonitored.toLocaleString()}</div>
+        <div className="text-[10px] text-emerald-700 font-bold font-mono mt-0.5">● 100% Tracking</div>
       </div>
 
       {/* KPI 2: Avg Network Inbound Delay */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>AVG NETWORK DELAY</span>
-          <Clock className="h-3.5 w-3.5 text-amber-400" />
+          <Clock className="h-3.5 w-3.5 text-amber-600" />
         </div>
-        <div className="mt-1.5 text-xl font-bold font-mono text-amber-400">+{avgDelayMinutes} min</div>
-        <div className="text-[10px] text-slate-400 font-mono mt-0.5">Median: +8.0m</div>
+        <div className="mt-1.5 text-xl font-black font-mono text-amber-700">+{avgDelayMinutes} min</div>
+        <div className="text-[10px] text-slate-500 font-mono mt-0.5">Median: +8.0m</div>
       </div>
 
       {/* KPI 3: Turnaround Shortfalls */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>RAKE SHORTFALLS</span>
-          <AlertTriangle className="h-3.5 w-3.5 text-red-400" />
+          <AlertTriangle className="h-3.5 w-3.5 text-red-600" />
         </div>
-        <div className="mt-1.5 text-xl font-bold font-mono text-red-400">{turnaroundConflicts}</div>
-        <div className="text-[10px] text-red-400/90 font-mono mt-0.5">Propagating Delay</div>
+        <div className="mt-1.5 text-xl font-black font-mono text-red-600">{turnaroundConflicts}</div>
+        <div className="text-[10px] text-red-600 font-mono font-semibold mt-0.5">Propagating Delay</div>
       </div>
 
       {/* KPI 4: On-Time Punctuality */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>PUNCTUALITY RATE</span>
-          <TrendingDown className="h-3.5 w-3.5 text-emerald-400" />
+          <TrendingDown className="h-3.5 w-3.5 text-emerald-600" />
         </div>
-        <div className="mt-1.5 text-xl font-bold font-mono text-emerald-400">{punctualityPct}%</div>
-        <div className="text-[10px] text-slate-400 font-mono mt-0.5">&lt; 15 min threshold</div>
+        <div className="mt-1.5 text-xl font-black font-mono text-emerald-700">{punctualityPct}%</div>
+        <div className="text-[10px] text-slate-500 font-mono mt-0.5">&lt; 15 min threshold</div>
       </div>
 
       {/* KPI 5: ML Delay Risk ROC-AUC */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>ML ROC-AUC</span>
-          <ShieldCheck className="h-3.5 w-3.5 text-sky-400" />
+          <ShieldCheck className="h-3.5 w-3.5 text-[#0b3b60]" />
         </div>
-        <div className="mt-1.5 text-xl font-bold font-mono text-sky-300">{rocAucScore.toFixed(4)}</div>
-        <div className="text-[10px] text-sky-400/90 font-mono mt-0.5">Zero-Leakage GBDT</div>
+        <div className="mt-1.5 text-xl font-black font-mono text-[#0b3b60]">{rocAucScore.toFixed(4)}</div>
+        <div className="text-[10px] text-slate-500 font-mono mt-0.5">Zero-Leakage GBDT</div>
       </div>
 
       {/* KPI 6: Active Corridor */}
-      <div className="glass-panel rounded-xl p-3.5 border border-white/5 bg-slate-900/60">
-        <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="bg-white rounded-xl p-3.5 border border-slate-200 shadow-sm">
+        <div className="flex items-center justify-between text-[11px] text-slate-600 font-bold">
           <span>FOCUS CORRIDOR</span>
-          <Zap className="h-3.5 w-3.5 text-amber-300" />
+          <Zap className="h-3.5 w-3.5 text-[#ea580c]" />
         </div>
-        <div className="mt-1.5 text-sm font-bold font-mono text-white truncate">MAS ⇄ CBE / SBC</div>
-        <div className="text-[10px] text-slate-400 font-mono mt-0.5">High Density HDN</div>
+        <div className="mt-1.5 text-sm font-bold font-mono text-[#082b4c] truncate">MAS ⇄ CBE / SBC</div>
+        <div className="text-[10px] text-slate-500 font-mono mt-0.5">High Density HDN</div>
       </div>
     </div>
   );

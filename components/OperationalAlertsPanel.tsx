@@ -54,15 +54,15 @@ const SAMPLE_ALERTS: OperationalAlert[] = [
 
 export default function OperationalAlertsPanel() {
   return (
-    <div className="glass-panel rounded-xl p-5 border border-white/10 space-y-4">
-      <div className="flex items-center justify-between pb-3 border-b border-white/10">
+    <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-4">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-200">
         <div className="flex items-center space-x-2">
-          <ShieldAlert className="h-5 w-5 text-amber-400" />
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
+          <ShieldAlert className="h-5 w-5 text-amber-600" />
+          <h3 className="text-sm font-bold text-[#082b4c] uppercase tracking-wider font-mono">
             LIVE OPERATIONAL DISPATCH & CONFLICT ALERTS
           </h3>
         </div>
-        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/20 font-bold">
+        <span className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-red-50 text-red-700 border border-red-200 font-bold">
           {SAMPLE_ALERTS.length} ACTIVE INCIDENTS
         </span>
       </div>
@@ -76,37 +76,37 @@ export default function OperationalAlertsPanel() {
               key={alt.id}
               className={`p-3.5 rounded-lg border flex flex-col justify-between transition-all ${
                 isCrit
-                  ? 'bg-red-950/20 border-red-500/30 hover:border-red-500/60'
+                  ? 'bg-red-50/70 border-red-200 hover:border-red-300'
                   : isWarn
-                  ? 'bg-amber-950/20 border-amber-500/30 hover:border-amber-500/60'
-                  : 'bg-slate-900/60 border-white/5 hover:border-white/20'
+                  ? 'bg-amber-50/70 border-amber-200 hover:border-amber-300'
+                  : 'bg-blue-50/60 border-blue-200 hover:border-blue-300'
               }`}
             >
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
                   <span
-                    className={`font-bold font-mono text-[10px] px-1.5 py-0.2 rounded ${
+                    className={`font-bold font-mono text-[10px] px-2 py-0.5 rounded ${
                       isCrit
-                        ? 'bg-red-500/20 text-red-400'
+                        ? 'bg-red-100 text-red-800'
                         : isWarn
-                        ? 'bg-amber-500/20 text-amber-400'
-                        : 'bg-sky-500/20 text-sky-400'
+                        ? 'bg-amber-100 text-amber-900'
+                        : 'bg-blue-100 text-blue-800'
                     }`}
                   >
                     {alt.severity}
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400">{alt.timestamp}</span>
+                  <span className="text-[10px] font-mono text-slate-500 font-medium">{alt.timestamp}</span>
                 </div>
-                <h4 className="text-xs font-bold text-white line-clamp-1">{alt.title}</h4>
-                <p className="text-[11px] text-slate-300 leading-relaxed line-clamp-3">{alt.description}</p>
+                <h4 className="text-xs font-bold text-slate-900 line-clamp-1">{alt.title}</h4>
+                <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-3">{alt.description}</p>
               </div>
 
               {alt.action_href && (
-                <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-slate-400">Loc: {alt.station_code}</span>
+                <div className="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-slate-500 font-medium">Loc: {alt.station_code}</span>
                   <Link
                     href={alt.action_href}
-                    className="text-[11px] font-bold text-sky-400 hover:text-sky-300 flex items-center gap-1"
+                    className="text-[11px] font-bold text-[#0b3b60] hover:text-[#ea580c] flex items-center gap-1 transition-colors"
                   >
                     <span>{alt.action_label}</span>
                     <ArrowRight className="h-3 w-3" />
